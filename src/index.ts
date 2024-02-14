@@ -1,3 +1,3 @@
-import { AppExpress } from './module/app/app-express';
+import { AppExpress } from './app/app-express';
 
 new AppExpress().start();

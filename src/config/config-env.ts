@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import { Config } from './type/config';
 
-export class ConfigProcessEnv implements Config {
+export class ConfigEnv implements Config {
   constructor() {
     const env = dotenv.config({ path: './.env' });
     if (env.error) {

@@ -1,6 +1,6 @@
 // eslint-disable-next-line
 // @ts-ignore
-import PackageJson from '../../../package.json';
+import PackageJson from '../../package.json';
 
 interface ReturnProps {
   appFullName: string;

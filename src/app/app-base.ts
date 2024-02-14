@@ -1,4 +1,4 @@
-import { ConfigProcessEnv } from '../config/config-process-env';
+import { ConfigEnv } from '../config/config-env';
 import { Config } from '../config/type/config';
 import { LoggerConsole } from '../logger/logger-console';
 import { Logger } from '../logger/type/logger';
@@ -10,13 +10,13 @@ export abstract class AppBase implements App {
   protected logger: Logger;
 
   constructor() {
-    this.config = new ConfigProcessEnv();
+    this.config = new ConfigEnv();
     this.logger = new LoggerConsole();
 
-    this.subscribeToEventStop();
+    this.subscribeOnStop();
   }
 
-  private subscribeToEventStop() {
+  private subscribeOnStop() {
     process.on(Signal.INTERRUPT, this.onStop);
     process.on(Signal.TERMINATE, this.onStop);
     process.on(Signal.USER1, this.onStop);
