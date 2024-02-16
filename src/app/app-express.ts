@@ -2,12 +2,21 @@ import express, { Express } from 'express';
 import { Signal } from '../signal/type/signal';
 import { AppBase } from './app-base';
 
+const PORT = 8080;
+
 export class AppExpress extends AppBase {
   private app: Express;
+  private port: number;
 
   constructor() {
     super();
+
     this.app = express();
+
+    this.port = this.config.get<number>('PORT', PORT);
+    if (!this.port) {
+      throw new Error('Invalid application configuration');
+    }
   }
 
   start() {
@@ -19,14 +28,9 @@ export class AppExpress extends AppBase {
   }
 
   private startServer() {
-    const port = this.config.get<number>('PORT', 8080);
-    const nodeEnv = this.config.get<string>('NODE_ENV');
-    if (!port || !nodeEnv) {
-      throw new Error('Invalid application configuration');
-    }
-
-    this.app.listen(port, () => {
-      this.logger.log(`Application is running at port ${port} in a ${`${nodeEnv}`.toUpperCase()} hosting environment`);
+    this.app.listen(this.port, () => {
+      const envHosting = this.config.getEnvHosting();
+      this.logger.log(`Application is running at port ${this.port} in a ${`${envHosting}`} hosting environment`);
     });
   }
 

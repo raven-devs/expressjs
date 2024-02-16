@@ -12,4 +12,8 @@ export class ConfigEnv implements Config {
   get<T>(entryName: string, entryDefaultValue?: unknown): T {
     return (process.env[entryName] || entryDefaultValue) as T;
   }
+
+  getEnvHosting(): string {
+    return this.get<string>('NODE_ENV').toUpperCase();
+  }
 }
