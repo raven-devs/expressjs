@@ -1,7 +1,8 @@
 import express, { Express } from 'express';
-import { ExceptionInvalidAppConfig } from '../exception/exception-invalid-app-config';
-import { Signal } from '../process/signal/type/signal';
-import { AppBase } from './app-base';
+import { ExceptionInvalidAppConfig } from '../../exception/exception-invalid-app-config';
+import { Signal } from '../../process/signal/type/signal';
+import { AppBase } from '../app-base';
+import { useStatic } from './middleware/useStatic';
 
 const PORT = 8080;
 
@@ -25,7 +26,7 @@ export class AppExpress extends AppBase {
       res.status(200).send('Hello World!');
     });
 
-    this.useStatic('/public', 'public');
+    useStatic(this.app, '/public', 'public');
 
     this.startServer();
   }
@@ -35,10 +36,6 @@ export class AppExpress extends AppBase {
       const envHosting = this.config.getNodeEnv();
       this.logger.log(`Application is running at port ${this.port} in a ${`${envHosting}`} hosting environment`);
     });
-  }
-
-  useStatic(urlPath: string, dirPath: string) {
-    this.app.use(urlPath, express.static(dirPath));
   }
 
   onStop(signal: Signal) {
