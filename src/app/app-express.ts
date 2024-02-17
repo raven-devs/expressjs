@@ -1,6 +1,6 @@
 import express, { Express } from 'express';
 import { ExceptionInvalidAppConfig } from '../exception/exception-invalid-app-config';
-import { Signal } from '../signal/type/signal';
+import { Signal } from '../process/signal/type/signal';
 import { AppBase } from './app-base';
 
 const PORT = 8080;
@@ -25,6 +25,8 @@ export class AppExpress extends AppBase {
       res.status(200).send('Hello World!');
     });
 
+    this.useStatic('/public', 'public');
+
     this.startServer();
   }
 
@@ -35,7 +37,11 @@ export class AppExpress extends AppBase {
     });
   }
 
-  onStop(signal: Signal): void {
+  useStatic(urlPath: string, dirPath: string) {
+    this.app.use(urlPath, express.static(dirPath));
+  }
+
+  onStop(signal: Signal) {
     if (signal === Signal.USER2) {
       process.kill(process.pid, signal);
     }

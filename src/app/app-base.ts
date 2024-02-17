@@ -2,7 +2,7 @@ import { ConfigEnv } from '../config/config-env';
 import { Config } from '../config/type/config';
 import { LoggerConsole } from '../logger/logger-console';
 import { Logger } from '../logger/type/logger';
-import { Signal } from '../signal/type/signal';
+import { Signal } from '../process/signal/type/signal';
 import { App } from './type/app';
 
 export abstract class AppBase implements App {

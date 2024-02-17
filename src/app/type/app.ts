@@ -1,4 +1,4 @@
-import { Signal } from '../../signal/type/signal';
+import { Signal } from '../../process/signal/type/signal';
 
 export interface App {
   start(): void;

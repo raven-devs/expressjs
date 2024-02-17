@@ -14,13 +14,13 @@ export class LoggerConsole implements Logger {
     this.config = config;
   }
 
-  log(...args: unknown[]): void {
+  log(...args: unknown[]) {
     const argsUpdated = this.prepareArgs(args);
     // eslint-disable-next-line
     console.log(...argsUpdated);
   }
 
-  error(...args: unknown[]): void {
+  error(...args: unknown[]) {
     const argsUpdated = this.prepareArgs(args);
     console.error(...argsUpdated);
   }
