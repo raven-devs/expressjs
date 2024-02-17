@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 
 export interface CrudControllerRemove {
-  remove(req: Request, res: Response, next?: NextFunction): void;
+  remove(req: Request, res: Response): Promise<void>;
 }

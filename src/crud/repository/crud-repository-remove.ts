@@ -1,3 +1,3 @@
 export interface CrudRepositoryRemove<T> {
-  remove(id: string): T;
+  remove(id: string): Promise<T>;
 }

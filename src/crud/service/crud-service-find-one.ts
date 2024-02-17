@@ -1,3 +1,3 @@
 export interface CrudServiceFindOne<T> {
-  findOne(id: string): T;
+  findOne(id: string): Promise<T>;
 }

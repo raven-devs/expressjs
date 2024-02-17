@@ -1,3 +1,3 @@
 export interface CrudRepositoryFindAll<T> {
-  findAll(): T[];
+  findAll(): Promise<T[]>;
 }

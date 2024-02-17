@@ -1,3 +1,3 @@
 export interface CrudServiceFindAll<T> {
-  findAll(): T[];
+  findAll(): Promise<T[]>;
 }

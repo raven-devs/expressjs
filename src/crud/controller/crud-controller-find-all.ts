@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 
 export interface CrudControllerFindAll {
-  findAll(req: Request, res: Response, next?: NextFunction): void;
+  findAll(req: Request, res: Response): Promise<void>;
 }
