@@ -1,9 +1,0 @@
-@host = http://localhost
-@port = 8080
-@baseUrl = /
-@url = {{host}}:{{port}}{{baseUrl}}
-@contentTypeJson = application/json
-
-### findAll
-GET {{url}}
-Content-Type: {{contentTypeJson}}

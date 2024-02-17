@@ -1,0 +1,9 @@
+@host = http://localhost
+@port = 8080
+@baseUrl = /products
+@url = {{host}}:{{port}}{{baseUrl}}
+@headerContentTypeJson = Content-Type: application/json
+
+### find all
+GET {{url}}
+{{headerContentTypeJson}}
