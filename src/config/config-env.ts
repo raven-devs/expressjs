@@ -13,7 +13,7 @@ export class ConfigEnv implements Config {
     return (process.env[entryName] || entryDefaultValue) as T;
   }
 
-  getEnvHosting(): string {
-    return this.get<string>('NODE_ENV').toUpperCase();
+  getNodeEnv(): string {
+    return this.get<string>('NODE_ENV');
   }
 }

@@ -1,4 +1,5 @@
 import express, { Express } from 'express';
+import { ExceptionInvalidAppConfig } from '../exception/exception-invalid-app-config';
 import { Signal } from '../signal/type/signal';
 import { AppBase } from './app-base';
 
@@ -15,7 +16,7 @@ export class AppExpress extends AppBase {
 
     this.port = this.config.get<number>('PORT', PORT);
     if (!this.port) {
-      throw new Error('Invalid application configuration');
+      throw new ExceptionInvalidAppConfig();
     }
   }
 
@@ -29,7 +30,7 @@ export class AppExpress extends AppBase {
 
   private startServer() {
     this.app.listen(this.port, () => {
-      const envHosting = this.config.getEnvHosting();
+      const envHosting = this.config.getNodeEnv();
       this.logger.log(`Application is running at port ${this.port} in a ${`${envHosting}`} hosting environment`);
     });
   }
