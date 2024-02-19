@@ -7,11 +7,7 @@ export class LoggerConsole implements Logger {
 
   constructor() {
     const { appFullName } = usePackageJson();
-    const config: LoggerConfig = {
-      prefix: `[${appFullName}]:`,
-    };
-
-    this.config = config;
+    this.config = new LoggerConfig(`[${appFullName}]:`);
   }
 
   log(...args: unknown[]) {

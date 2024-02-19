@@ -1,30 +1,61 @@
-import express, { Router } from 'express';
-import { v4 as uuid } from 'uuid';
+import { NextFunction, Request, Response } from 'express';
+import { CrudRouterBase } from '../../crud/router/crud-router-base';
 import { Logger } from '../../logger/type/logger';
+import { ProductController } from './product-controller';
+import { ProductLoggerMiddleware } from './product-logger-middleware';
 
-export class ProductRoute {
-  private router: Router;
-  private logger: Logger;
+export class ProductRouter extends CrudRouterBase {
+  constructor(
+    private logger: Logger,
+    private controller: ProductController,
+  ) {
+    super('/products');
 
-  constructor(logger: Logger) {
-    this.logger = logger;
-    this.router = express.Router();
-
-    this.router.use((req, res, next) => {
-      this.logger.log('Time: ', Date.now());
-      next();
-    });
-
-    this.router.get('/', (req, res) => {
-      res.send({ id: uuid() });
-    });
-
-    this.router.get('/about', (req, res) => {
-      res.send({ id: uuid(), about: true });
-    });
+    this.router.use(ProductLoggerMiddleware(this.logger));
   }
 
-  get(): Router {
-    return this.router;
+  async findAll(req: Request, res: Response, next: NextFunction) {
+    try {
+      console.log('findAll');
+      res.end();
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async findOne(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      console.log('findOne');
+      res.end();
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async create(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      console.log('create');
+      res.end();
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async update(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      console.log('update');
+      res.end();
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async remove(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      console.log('remove');
+      res.end();
+    } catch (error) {
+      next(error);
+    }
   }
 }

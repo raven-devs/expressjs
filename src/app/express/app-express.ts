@@ -1,9 +1,9 @@
 import express, { Express } from 'express';
-import { ProductRoute } from '../../api/product/product-router';
+import { ProductController } from '../../api/product/product-controller';
+import { ProductRouter } from '../../api/product/product-router';
 import { ExceptionInvalidAppConfig } from '../../exception/exception-invalid-app-config';
 import { Signal } from '../../process/signal/type/signal';
 import { AppBase } from '../app-base';
-import { Router } from '../router/router';
 import { useStatic } from './middleware/useStatic';
 
 const PORT = 8080;
@@ -24,7 +24,9 @@ export class AppExpress extends AppBase {
   }
 
   start() {
-    this.app.use(Router.Products, new ProductRoute(this.logger).get());
+    const productController = new ProductController();
+    const productRouter = new ProductRouter(this.logger, productController);
+    this.app.use('/', productRouter.mount());
 
     useStatic(this.app, '/public', 'public');
 
@@ -32,9 +34,9 @@ export class AppExpress extends AppBase {
   }
 
   private startHttpServer() {
-    this.app.listen(this.port, () => {
+    this.app.listen(this.port, async () => {
       const envHosting = this.config.getNodeEnv();
-      this.logger.log(`Application is running at port ${this.port} in a ${`${envHosting}`} hosting environment`);
+      await this.logger.log(`Application is running at port ${this.port} in a ${`${envHosting}`} hosting environment`);
     });
   }
 

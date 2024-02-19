@@ -1,9 +1,34 @@
-@host = http://localhost
-@port = 8080
-@baseUrl = /products
-@url = {{host}}:{{port}}{{baseUrl}}
-@headerContentTypeJson = Content-Type: application/json
+@HOST = http://localhost
+@PORT = 8080
+@BASE_URL = /products
+@URL = {{HOST}}:{{PORT}}{{BASE_URL}}
+@HEADER_CONTENT_TYPE_JSON = Content-Type: application/json
+@ENTRY_ID = asdsadsadsad
 
 ### find all
-GET {{url}}
-{{headerContentTypeJson}}
+GET {{URL}}
+{{HEADER_CONTENT_TYPE_JSON}}
+
+### find one
+GET {{URL}}/{{ENTRY_ID}}
+{{HEADER_CONTENT_TYPE_JSON}}
+
+### create
+POST {{URL}}
+{{HEADER_CONTENT_TYPE_JSON}}
+
+{
+  
+}
+
+### update
+PATCH {{URL}}/{{ENTRY_ID}}
+{{HEADER_CONTENT_TYPE_JSON}}
+
+{
+
+}
+
+### remove
+DELETE {{URL}}/{{ENTRY_ID}}
+{{HEADER_CONTENT_TYPE_JSON}}
