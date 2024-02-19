@@ -3,7 +3,7 @@
 @BASE_URL = /products
 @URL = {{HOST}}:{{PORT}}{{BASE_URL}}
 @HEADER_CONTENT_TYPE_JSON = Content-Type: application/json
-@ENTRY_ID = asdsadsadsad
+@ENTRY_ID = 1
 
 ### find all
 GET {{URL}}

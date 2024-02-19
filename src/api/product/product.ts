@@ -1,6 +1,6 @@
 import { EntryBase } from '../../entry/entry-base';
 
-export interface Product extends EntryBase {
+export class Product extends EntryBase {
   name: string;
   serialNumber: string;
 }

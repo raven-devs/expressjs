@@ -16,44 +16,39 @@ export class ProductRouter extends CrudRouterBase {
 
   async findAll(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log('findAll');
-      res.end();
+      res.send('findAll');
     } catch (error) {
       next(error);
     }
   }
 
-  async findOne(req: Request, res: Response, next: NextFunction): Promise<void> {
+  async findOne(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log('findOne');
-      res.end();
+      res.send('findOne');
     } catch (error) {
       next(error);
     }
   }
 
-  async create(req: Request, res: Response, next: NextFunction): Promise<void> {
+  async create(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log('create');
-      res.end();
+      res.send('create');
     } catch (error) {
       next(error);
     }
   }
 
-  async update(req: Request, res: Response, next: NextFunction): Promise<void> {
+  async update(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log('update');
-      res.end();
+      res.send('update');
     } catch (error) {
       next(error);
     }
   }
 
-  async remove(req: Request, res: Response, next: NextFunction): Promise<void> {
+  async remove(req: Request, res: Response, next: NextFunction) {
     try {
-      console.log('remove');
-      res.end();
+      res.send('remove');
     } catch (error) {
       next(error);
     }
