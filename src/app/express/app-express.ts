@@ -1,7 +1,7 @@
 import express, { Express } from 'express';
 import { ProductController } from '../../api/product/product-controller';
 import { ProductRouter } from '../../api/product/product-router';
-import { ExceptionInvalidAppConfig } from '../../exception/exception-invalid-app-config';
+import { ExceptionInvalidAppConfig } from '../../exception/custom/exception-invalid-app-config';
 import { Signal } from '../../process/signal/type/signal';
 import { AppBase } from '../app-base';
 import { useStatic } from './middleware/useStatic';

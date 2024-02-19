@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { CrudRouterBase } from '../../crud/router/crud-router-base';
 import { Logger } from '../../logger/type/logger';
+import { useProductLogger } from './middleware/use-product-logger';
 import { ProductController } from './product-controller';
-import { ProductLoggerMiddleware } from './product-logger-middleware';
 
 export class ProductRouter extends CrudRouterBase {
   constructor(
@@ -11,7 +11,7 @@ export class ProductRouter extends CrudRouterBase {
   ) {
     super('/products');
 
-    this.router.use(ProductLoggerMiddleware(this.logger));
+    this.router.use(useProductLogger(this.logger));
   }
 
   async findAll(req: Request, res: Response, next: NextFunction) {

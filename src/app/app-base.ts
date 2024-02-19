@@ -1,7 +1,9 @@
 import { ConfigEnv } from '../config/config-env';
 import { Config } from '../config/type/config';
+import { LoggerConfig } from '../logger/logger-config';
 import { LoggerConsole } from '../logger/logger-console';
 import { Logger } from '../logger/type/logger';
+import { usePackageJson } from '../packageJson/use-package-json';
 import { Signal } from '../process/signal/type/signal';
 import { App } from './type/app';
 
@@ -11,7 +13,10 @@ export abstract class AppBase implements App {
 
   constructor() {
     this.config = new ConfigEnv();
-    this.logger = new LoggerConsole();
+
+    const { appName } = usePackageJson();
+    const loggerConfig = new LoggerConfig(`[${appName}]:`);
+    this.logger = new LoggerConsole(loggerConfig);
 
     this.subscribeOnStop();
   }

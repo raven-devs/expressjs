@@ -3,13 +3,13 @@
 import PackageJson from '../../package.json';
 
 interface ReturnProps {
-  appFullName: string;
+  appName: string;
 }
 
 export const usePackageJson = (): ReturnProps => {
-  const appFullName = `${PackageJson.name}@${PackageJson.version}`;
+  const appName = `${PackageJson.name}@${PackageJson.version}`;
 
   return {
-    appFullName,
+    appName,
   };
 };

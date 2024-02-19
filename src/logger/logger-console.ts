@@ -1,14 +1,8 @@
-import { usePackageJson } from '../packageJson/use-package-json';
+import { LoggerConfig } from './logger-config';
 import { Logger } from './type/logger';
-import { LoggerConfig } from './type/logger-config';
 
 export class LoggerConsole implements Logger {
-  private config: LoggerConfig;
-
-  constructor() {
-    const { appFullName } = usePackageJson();
-    this.config = new LoggerConfig(`[${appFullName}]:`);
-  }
+  constructor(private config: LoggerConfig) {}
 
   log(...args: unknown[]) {
     const argsUpdated = this.prepareArgs(args);

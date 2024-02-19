@@ -14,7 +14,7 @@ export abstract class CrudRouterBase
     this.router = express.Router();
   }
 
-  mount() {
+  mount(): Router {
     this.router.get(`${this.routerPath}/`, this.preFindAll(), this.findAll);
     this.router.get(`${this.routerPath}/:id`, this.preFindOne(), this.findOne);
     this.router.post(`${this.routerPath}/`, this.preCreate(), this.create);

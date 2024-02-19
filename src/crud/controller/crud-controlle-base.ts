@@ -13,23 +13,23 @@ export abstract class CrudControllerBase
     CrudControllerUpdate,
     CrudControllerRemove
 {
-  async findAll(req: Request, res: Response): Promise<void> {
+  async findAll(req: Request, res: Response) {
     throw new Error('Method not implemented.');
   }
 
-  async findOne(req: Request, res: Response): Promise<void> {
+  async findOne(req: Request, res: Response) {
     throw new Error('Method not implemented.');
   }
 
-  async create(req: Request, res: Response): Promise<void> {
+  async create(req: Request, res: Response) {
     throw new Error('Method not implemented.');
   }
 
-  async update(req: Request, res: Response): Promise<void> {
+  async update(req: Request, res: Response) {
     throw new Error('Method not implemented.');
   }
 
-  async remove(req: Request, res: Response): Promise<void> {
+  async remove(req: Request, res: Response) {
     throw new Error('Method not implemented.');
   }
 }
