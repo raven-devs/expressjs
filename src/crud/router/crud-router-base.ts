@@ -10,10 +10,6 @@ export abstract class CrudRouterBase
 {
   protected router: Router;
 
-  private cbNext = function (req: Request, res: Response, next: NextFunction) {
-    next();
-  };
-
   constructor(protected routerPath: string) {
     this.router = express.Router();
   }
@@ -53,4 +49,8 @@ export abstract class CrudRouterBase
     return [this.cbNext];
   }
   abstract remove(req: Request, res: Response, next: NextFunction): Promise<void>;
+
+  private cbNext(req: Request, res: Response, next: NextFunction) {
+    next();
+  }
 }
